@@ -133,6 +133,35 @@ La pasé increíble con vos. Ojalá sea el primero de muchos más destinos compa
             <div id="lightbox" class="lightbox" onclick="cerrarLightbox()">
                 <img id="lightbox-img" src="" alt="Imagen ampliada">
             </div>
+            
+            <audio id="bg-music" src="musica/EternoAmor.mp3" autoplay loop></audio>
+
+            <button id="toggle-music" class="music-btn">🔊</button>
+
+            <script>
+                const audio = document.getElementById("bg-music");
+                const toggleBtn = document.getElementById("toggle-music");
+
+                let isPlaying = true;
+                 // Manejo de autoplay en móviles
+                  document.addEventListener("click", function startAudio() {
+                    audio.play().catch(() => {});
+                    document.removeEventListener("click", startAudio);
+                      });
+
+                      
+                 toggleBtn.addEventListener("click", () => {
+                    if (isPlaying) {
+                  audio.pause();
+                  toggleBtn.textContent = "🔇";
+                    } else {
+                  audio.play();
+                  toggleBtn.textContent = "🔊";
+                    }
+                    isPlaying = !isPlaying;
+                    });
+            </script>
+
             <script>
                 const lightbox = document.getElementById("lightbox");
                   const lightboxImg = document.getElementById("lightbox-img");
@@ -147,6 +176,7 @@ La pasé increíble con vos. Ojalá sea el primero de muchos más destinos compa
   function cerrarLightbox() {
     lightbox.style.display = "none";
   }
-</script>
+            </script>
+
     </body>
 </hmtl>
